@@ -4,9 +4,11 @@ export default function Page() {
   return (
     <main>
       <header>
-        <h1>CPRG 306: Web Development 2 - Assignments</h1>
+        <h1 className="p-4 m-3 text-4xl font-bold">
+          CPRG 306: Web Development 2
+        </h1>
       </header>
-      <div>
+      <div className="p-4 m-4">
         <Link href="/week-2">Week 2 Assignment</Link>
         <br />
         <Link href="/week-3">Week 3 Assignment</Link>
