@@ -13,6 +13,7 @@ export default function Page() {
         <br />
         <Link href="/week-3">Week 3 Assignment</Link>
         <br />
+        <Link href="/week-4">Week 4 Assignment</Link>
       </div>
     </main>
   );
