@@ -55,7 +55,7 @@ export default function NewItem() {
             />
           </label>
 
-          <div className="flex flex-row items-center gap-4">
+          <div className="flex justify-between items-center mb-4">
             <label className="flex-1 flex flex-row rounded-lg bg-gray-100 gap-2 p-3 m-3 justify-center">
               <span className="text-black mr-6">1</span>
               <button
