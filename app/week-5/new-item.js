@@ -14,13 +14,9 @@ export default function NewItem() {
     console.log(item);
     alert(`Added ${quantity} ${name} to ${category}`);
 
-    setNewItemCreated(true);
-
     setName("");
     setQuantity(1);
     setCategory("produce");
-
-    setNewItemCreated(false);
   };
 
   const handleNameChange = (event) => {
@@ -55,44 +51,45 @@ export default function NewItem() {
               placeholder="Enter item name"
               value={name}
               onChange={handleNameChange}
-              className="mt-1 mb-3 p-3 block w-full h-10 border-collapse rounded-md text-black bg-gray-100 focus:bg-white"
+              className="mt-1 mb-3 p-3 block w-full h-10 border border-black rounded-md text-black bg-gray-100 focus:bg-white"
             />
           </label>
 
-          <label htmlFor="category" className="ml-10 mt-10">
-            <span className="text-gray=800"></span>
-            <input onChange={handleCategoryChange} />
+          <div className="flex flex-row items-center gap-4">
+            <label className="flex-1 flex flex-row rounded-lg bg-gray-100 gap-2 p-3 m-3 justify-center">
+              <span className="text-black mr-6">1</span>
+              <button
+                onClick={decrement}
+                className="bg-gray-500 hover:bg-blue-700 text-white rounded-lg w-8"
+              >
+                -
+              </button>
 
-            <select className="border-gray-300 p-3 rounded-lg text-black bg-gray-100 focus:bg-white">
-              <option value="produce">Produce</option>
-              <option value="dairy">Dairy</option>
-              <option value="bakery">Bakery</option>
-              <option value="meat">Meat</option>
-              <option value="frozen">Frozen Foods</option>
-              <option value="canned">Canned Goods</option>
-              <option value="snacks">Snacks</option>
-              <option value="beverages">Beverages</option>
-              <option value="household">Household</option>
-              <option value="other">Other</option>
-            </select>
-          </label>
+              <button
+                onClick={increment}
+                className="bg-blue-700 hover:bg-gray-700 text-white rounded-lg w-8"
+              >
+                +
+              </button>
+            </label>
 
-          <label className="flex flex-row rounded-lg bg-gray-100 gap-2 p-3 m-3 w-28 justify-center">
-            <span className="text-black mr-6">1</span>
-            <button
-              onClick={decrement}
-              className=" bg-gray-500 hover:bg-blue-700 text-white rounded-lg w-8"
-            >
-              -
-            </button>
-
-            <button
-              onClick={increment}
-              className="bg-blue-700 hover:bg-gray-700 text-white rounded-lg w-8"
-            >
-              +
-            </button>
-          </label>
+            <label htmlFor="category" className="flex-1">
+              <span className="text-gray-800"></span>
+              <input onChange={handleCategoryChange} />
+              <select className="border-gray-300 p-3 rounded-lg text-black bg-gray-100 focus:bg-white w-full">
+                <option value="produce">Produce</option>
+                <option value="dairy">Dairy</option>
+                <option value="bakery">Bakery</option>
+                <option value="meat">Meat</option>
+                <option value="frozen">Frozen Foods</option>
+                <option value="canned">Canned Goods</option>
+                <option value="snacks">Snacks</option>
+                <option value="beverages">Beverages</option>
+                <option value="household">Household</option>
+                <option value="other">Other</option>
+              </select>
+            </label>
+          </div>
 
           <button
             type="submit"
