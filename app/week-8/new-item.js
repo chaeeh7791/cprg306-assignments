@@ -29,7 +29,6 @@ export default function NewItem(onAddItem) {
               type="text"
               placeholder="Enter item name"
               value={name}
-              onChange={handleNameChange}
               className="mt-1 mb-3 p-3 block w-full h-10 border border-black rounded-md text-black bg-gray-100 focus:bg-white"
             />
           </label>
