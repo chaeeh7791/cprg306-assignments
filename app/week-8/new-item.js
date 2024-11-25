@@ -3,15 +3,23 @@
 import { useState } from "react";
 //import { v4 as uuidv4 } from "uuid";
 
-export default function NewItem(onAddItem) {
+export default function NewItem({ onAddItem }) {
   const [quantity, setQuantity] = useState(1);
   const [name, setName] = useState("");
   const [category, setCategory] = useState("produce");
 
+  const decrement = () => {
+    setQuantity((prevQuantity) => Math.max(prevQuantity - 1, 1));
+  };
+
+  const increment = () => {
+    setQuantity((prevQuantity) => prevQuantity + 1);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const item = { id: "", name, category, quantity };
+    const item = { id: uuidv4(), name, category, quantity };
     console.log(item);
     onAddItem(item);
     setName("");
@@ -29,14 +37,16 @@ export default function NewItem(onAddItem) {
               type="text"
               placeholder="Enter item name"
               value={name}
+              onChange={(e) => setName(e.target.value)}
               className="mt-1 mb-3 p-3 block w-full h-10 border border-black rounded-md text-black bg-gray-100 focus:bg-white"
             />
           </label>
 
           <div className="flex justify-between items-center mb-4">
             <label className="flex-1 flex flex-row rounded-lg bg-gray-100 gap-2 p-3 m-3 justify-center">
-              <span className="text-black mr-6">1</span>
+              <span className="text-black mr-6">{quantity}</span>
               <button
+                type="button"
                 onClick={decrement}
                 className="bg-gray-500 hover:bg-blue-700 text-white rounded-lg w-8"
               >
@@ -44,6 +54,7 @@ export default function NewItem(onAddItem) {
               </button>
 
               <button
+                type="button"
                 onClick={increment}
                 className="bg-blue-700 hover:bg-gray-700 text-white rounded-lg w-8"
               >
@@ -53,8 +64,11 @@ export default function NewItem(onAddItem) {
 
             <label htmlFor="category" className="flex-1">
               <span className="text-gray-800"></span>
-              <input onChange={handleCategoryChange} />
-              <select className="border-gray-300 p-3 rounded-lg text-black bg-gray-100 focus:bg-white w-full">
+              <select
+                value={category}
+                onChange={(e) => setCategory(e.target.value)}
+                className="border-gray-300 p-3 rounded-lg text-black bg-gray-100 focus:bg-white w-full"
+              >
                 <option value="produce">Produce</option>
                 <option value="dairy">Dairy</option>
                 <option value="bakery">Bakery</option>
